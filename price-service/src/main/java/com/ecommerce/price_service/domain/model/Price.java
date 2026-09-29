@@ -32,5 +32,9 @@ public record Price(
         throw new IllegalArgumentException("amount must not be negative");
     }
 }
+    public boolean isApplicableAt(LocalDateTime date) {
+        Objects.requireNonNull(date, "date must not be null");
+        return !date.isBefore(startDate) && !date.isAfter(endDate);
+    }
 
 }
